@@ -1,0 +1,256 @@
+@charset 'UTF-8';
+@mixin box-sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin linear-gradient($from, $to) {
+  background: $from; /* Old browsers */
+  background: -moz-linear-gradient(top, $from 0%, $to 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,$to)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $from 0%,$to 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $from 0%,$to 100%); /* Opera 11.10+ */
+}
+@mixin sprite {
+  background-image: url("./images/sprite.png");
+}
+// @font-face {
+//   font-family:'FontAwesome';
+//   src:url('./font/fontawesome-webfont.eot?v=3.0.1');
+//   src:url('./font/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+//   url('./font/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+//   url('./font/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+//   font-weight:normal;
+//   font-style:normal
+// }
+#alxbar {
+  .icon-angle-down {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .dropdown > .dropdown-menu {
+    top: 18px;
+
+    &.pinned {
+      margin-bottom: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+      min-width: 245px;
+      left: auto;
+      right: -5px;
+      top: 60%;
+
+      & > li:last-child.btn {
+        border-left: 0 none;
+        border-right: 0 none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        display: inline-block;
+        padding: 0;
+        margin-top: 5px;
+        width: 100%;
+        box-shadow: none;
+
+        &:hover { box-shadow: 0 -15px 5px rgba(0, 0, 0, 0.1) inset; }
+      }
+    }
+  }
+
+  .dashboard {
+    .menu,
+    .header,
+    .authinfo-help-wrapper {
+      min-width: 960px;
+      max-width: 1170px; 
+      margin: 0 auto;
+    }
+  }
+
+  li > a {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  & > .header-wrapper {
+    @include linear-gradient(#9b9999, #898787);
+    .header {
+      position: relative;
+      min-height: 66px;
+      clear: both;
+      .logo {
+        @include sprite;
+        position: absolute;
+        top: 10px;
+        width: 77px;
+        height: 46px;
+        font-size: 0;
+        left: 20px;
+      }
+      .authinfo {
+        .dropdown-menu { display: block; }
+        .dropdown-menu.hide { display: none; }
+        .dropdown-menu > li > a {
+          font-size: 13px;
+          &:hover {
+            background-color: transparent;
+            color: inherit;
+          }
+        }
+        .greetings {
+          color: white;
+          font-size: 12px;
+          .name { font-weight: bold; }
+          .avatar {
+            @include sprite;
+            background-position: 0 -50px;
+            margin-right: 5px;
+            border-radius: 24px;
+            display: inline-block;
+            height: 48px;
+            vertical-align: middle;
+            width: 48px;
+          }
+        }
+        .icon-angle-down {
+          border-left: 1px solid white;
+          height: 15px;
+          padding-left: 10px;
+          text-align: center;
+          margin-left: 8px;
+          vertical-align: baseline;
+          cursor: pointer;
+        }
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        cursor: default;
+      }
+    }
+  }
+
+  & > .menu-wrapper {
+    @include linear-gradient(#484848, #282828);
+
+    .menu {
+      min-height: 40px;
+      clear: both;
+
+      .navbar {
+        margin: 9px 0;
+        padding-left: 20px;
+        float: left;
+
+        & > li {
+          border-left: 1px solid #797979;
+          padding: 0 15px;
+
+          & > a {
+            color: #FFF;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .navbar > li:first-child,
+      .user-shortcuts > .msg:first-child + li {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      & > .user-shortcuts {
+        min-height: 20px;
+        margin: 9px 10px 9px -120px;
+        padding-left: 7px;
+        overflow: hidden;
+        width: 100%;
+
+        .msg {
+          color: white;
+          font-size: 10px;
+          opacity: .5;
+        }
+      }
+
+      &.minimalist {
+        margin-left: 120px;
+
+        .navbar {
+          margin-left: -120px;
+
+          &.user-shortcuts {
+            margin: 0;
+            padding: 10px 0;
+            white-space: nowrap;
+          }
+
+          &:first-child > li {
+            border-right: 1px solid #797979;
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+  }
+  .switcher {
+    padding-right: 90px;
+    .on-off {
+      @include sprite;
+      background-repeat: no-repeat;
+      border: 0 none;
+      cursor: pointer;
+      direction: ltr;
+      display: inline-block;
+      height: 23px;
+      overflow: hidden;
+      text-align: left;
+      text-indent: -999em;
+      width: 70px;
+      background-position: -80px -23px;
+      vertical-align: bottom;
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      &.active { background-position: -80px 0; }
+    }
+  }
+  .authinfo-help {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .authinfo-help-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 1001;
+  }
+  .authinfo-help-wrapper {
+    position: relative;
+  }
+  .authinfo-help-panel {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    width: 472px;
+    height: 197px;
+    background: url("./images/help.png") no-repeat;
+    z-index: 1002;
+
+    .fake-btn {
+      position: absolute;
+      top: 45px;
+      right: 2px;
+      width: 70px;
+      height: 23px;
+      cursor: pointer;
+    }
+  }
+}
